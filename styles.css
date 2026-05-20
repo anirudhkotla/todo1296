@@ -1,0 +1,214 @@
+:root {
+  color-scheme: light;
+  --bg: #eaf4ff;
+  --panel: #ffffff;
+  --ink: #102a43;
+  --muted: #5f7897;
+  --blue: #2563eb;
+  --blue-dark: #1d4ed8;
+  --blue-soft: #dbeafe;
+  --line: #bfd7f5;
+  --shadow: 0 24px 60px rgba(37, 99, 235, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(96, 165, 250, 0.35), transparent 34rem),
+    linear-gradient(135deg, #f7fbff 0%, var(--bg) 100%);
+  color: var(--ink);
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 32px 16px;
+}
+
+.todo-panel {
+  width: min(720px, 100%);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 28px;
+}
+
+.header-row,
+.task-form,
+.filters,
+.task-item {
+  display: flex;
+  align-items: center;
+}
+
+.header-row {
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  margin: 0 0 4px;
+  color: var(--blue);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  letter-spacing: 0;
+}
+
+.count-pill {
+  flex: 0 0 auto;
+  border: 1px solid var(--line);
+  background: var(--blue-soft);
+  color: var(--blue-dark);
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-weight: 700;
+}
+
+.task-form {
+  gap: 10px;
+}
+
+.task-form input {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px 16px;
+  font: inherit;
+  color: var(--ink);
+}
+
+.task-form input:focus {
+  outline: 3px solid rgba(37, 99, 235, 0.18);
+  border-color: var(--blue);
+}
+
+button {
+  border: 0;
+  border-radius: 8px;
+  background: var(--blue);
+  color: white;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 160ms ease, background 160ms ease;
+}
+
+button:hover {
+  background: var(--blue-dark);
+  transform: translateY(-1px);
+}
+
+.task-form button {
+  padding: 14px 18px;
+}
+
+.filters {
+  gap: 8px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.filters button {
+  background: #eef6ff;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  padding: 9px 12px;
+}
+
+.filters button.active {
+  background: var(--blue);
+  color: white;
+  border-color: var(--blue);
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.task-item {
+  gap: 12px;
+  border: 1px solid var(--line);
+  background: #f8fbff;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.task-item.completed .task-text {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.task-item input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--blue);
+}
+
+.task-text {
+  flex: 1;
+  overflow-wrap: anywhere;
+}
+
+.delete-btn {
+  background: #e0efff;
+  color: var(--blue-dark);
+  padding: 8px 10px;
+}
+
+.empty-state {
+  display: none;
+  text-align: center;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  padding: 24px;
+  color: var(--muted);
+}
+
+.empty-state.visible {
+  display: block;
+}
+
+.empty-state h2 {
+  margin: 0 0 6px;
+  color: var(--ink);
+}
+
+.empty-state p {
+  margin: 0;
+}
+
+@media (max-width: 520px) {
+  .todo-panel {
+    padding: 20px;
+  }
+
+  .header-row,
+  .task-form {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .count-pill {
+    width: fit-content;
+  }
+}
